@@ -2,6 +2,4 @@
 
 ## 機能概要
 
-* Rails Tutorial　サンプルアプリケーション
-
-* Rails Tutorial をRspecでテストしてみた
+* Rails TutorialをRspecでテストしてみた
