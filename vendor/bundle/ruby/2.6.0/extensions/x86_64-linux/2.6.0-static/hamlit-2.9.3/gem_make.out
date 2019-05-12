@@ -1,0 +1,16 @@
+current directory: /home/vagrant/work/sample_app/vendor/bundle/ruby/2.6.0/gems/hamlit-2.9.3/ext/hamlit
+/home/vagrant/.rbenv/versions/2.6.3/bin/ruby -I /home/vagrant/.rbenv/versions/2.6.3/lib/ruby/2.6.0 -r ./siteconf20190512-23997-1hftcx.rb extconf.rb
+creating Makefile
+
+current directory: /home/vagrant/work/sample_app/vendor/bundle/ruby/2.6.0/gems/hamlit-2.9.3/ext/hamlit
+make "DESTDIR=" clean
+
+current directory: /home/vagrant/work/sample_app/vendor/bundle/ruby/2.6.0/gems/hamlit-2.9.3/ext/hamlit
+make "DESTDIR="
+compiling hamlit.c
+compiling hescape.c
+linking shared-object hamlit/hamlit.so
+
+current directory: /home/vagrant/work/sample_app/vendor/bundle/ruby/2.6.0/gems/hamlit-2.9.3/ext/hamlit
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 hamlit.so ./.gem.20190512-23997-10dssm6/hamlit
