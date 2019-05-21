@@ -11,12 +11,11 @@ RSpec.describe StaticPagesController, type: :controller do
     it 'ステータスコード200が返る' do
       get :home
       expect(response).to have_http_status(200)
-      assert_select 'title', "Home | #{@base_title}"
     end
 
     it 'タイトルが Home | Ruby on Rails Tutorial Sample App である' do
       get :home
-      assert_select 'title', "Home | #{@base_title}"
+      assert_select 'title', @base_title
     end
   end
 

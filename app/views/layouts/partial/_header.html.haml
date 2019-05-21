@@ -1,0 +1,9 @@
+%header
+  %nav
+    .nav-wrapper
+      =link_to 'sample app', root_path, class: 'brand-logo left'
+      %ul.right#nav-mobile
+        %li
+          = link_to 'Home', root_path
+        %li
+          = link_to 'Help', static_pages_help_path

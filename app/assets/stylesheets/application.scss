@@ -17,3 +17,14 @@
  @import "materialize/components/color-variables";
  $primary-color: color("light-blue", "darken-3") !default;
  @import 'materialize';
+
+body,
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  margin-top: auto;
+}
