@@ -10,4 +10,6 @@
 
 * Rails version 5.2.3
 
+* Rspec version 3.8.0
+
 * Template haml
