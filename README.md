@@ -23,3 +23,5 @@
 * annotate
 
 * simple_form
+
+* factory_bot
