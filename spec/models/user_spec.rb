@@ -25,14 +25,11 @@ RSpec.describe User, type: :model do
     it 'ユーザーが有効である' do
       expect(@user).to be_valid
     end
+  end
 
+  describe 'name' do
     it 'nameが空の時無効である' do
       @user.name = ''
-      expect(@user).to_not be_valid
-    end
-
-    it 'emailが空の時無効である' do
-      @user.email = ''
       expect(@user).to_not be_valid
     end
 
@@ -45,30 +42,22 @@ RSpec.describe User, type: :model do
       @user.name = 'a' * 50
       expect(@user).to be_valid
     end
+  end
+
+  describe 'email' do
+    it 'emailが空の時無効である' do
+      @user.email = ''
+      expect(@user).to_not be_valid
+    end
 
     it 'emailが256文字以上の時無効である' do
-      @user.email = 'a' * 244 + "@example.com"
+      @user.email = 'a' * 244 + '@example.com'
       expect(@user).to_not be_valid
     end
 
     it 'emailが255文字の時有効である' do
-      @user.email = 'a' * 243 + "@example.com"
+      @user.email = 'a' * 243 + '@example.com'
       expect(@user).to be_valid
-    end
-
-    it 'passwordが空文字の時無効である' do
-      @user.password = @user.password_confirmation = "　" * 6
-      expect(@user).to_not be_valid
-    end
-
-    it 'passwordが6文字以上の時有効である' do
-      @user.password = @user.password_confirmation = "a" * 6
-      expect(@user).to be_valid
-    end
-
-    it 'passwordが5文字以下の時無効である' do
-      @user.password = @user.password_confirmation = "a" * 5
-      expect(@user).to_not be_valid
     end
 
     it '重複したメールアドレスは無効である' do
@@ -99,6 +88,34 @@ RSpec.describe User, type: :model do
       @user.email = mixed_case_email
       @user.save
       expect(@user.reload.email).to eq mixed_case_email.downcase
+    end
+  end
+
+  describe 'password' do
+    it 'passwordが空文字の時無効である' do
+      @user.password = @user.password_confirmation = '　' * 6
+      expect(@user).to_not be_valid
+    end
+
+    it 'passwordが6文字以上の時有効である' do
+      @user.password = @user.password_confirmation = 'a' * 6
+      expect(@user).to be_valid
+    end
+
+    it 'passwordが5文字以下の時無効である' do
+      @user.password = @user.password_confirmation = 'a' * 5
+      expect(@user).to_not be_valid
+    end
+
+    it 'passwordとpassword_confirmationが一致する時有効である' do
+      @user.password = @user.password_confirmation = 'password'
+      expect(@user).to be_valid
+    end
+
+    it 'passwordとpassword_confirmationが一致しない時無効である' do
+      @user.password = 'password'
+      @user.password_confirmation = 'dif_password'
+      expect(@user).to_not be_valid
     end
   end
 end
