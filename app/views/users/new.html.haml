@@ -1,3 +1,10 @@
 = provide(:title, 'Sign up')
 %h1 Sign up
-%p This will be a signup page for new users.
+.container
+= simple_form_for @user do |f|
+  = f.input :name
+  = f.input :email
+  = f.input :password
+  = f.input :password_confirmation
+  %br
+    = f.button :submit, 'Sign up'

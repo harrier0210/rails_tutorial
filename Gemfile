@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'hamlit'
 gem 'haml-rails'
-#gem 'simple_form'
+gem 'simple_form'
 gem 'materialize-sass', '~> 1.0.0'
 gem 'material_icons'
 gem 'jquery-rails'
