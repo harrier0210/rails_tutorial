@@ -2,11 +2,16 @@
 #
 # Table name: users
 #
-#  id         :integer          not null, primary key
-#  name       :string
-#  email      :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id              :integer          not null, primary key
+#  email           :string
+#  name            :string
+#  password_digest :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+# Indexes
+#
+#  index_users_on_email  (email) UNIQUE
 #
 
 require 'rails_helper'
@@ -49,6 +54,21 @@ RSpec.describe User, type: :model do
     it 'emailが255文字の時有効である' do
       @user.email = 'a' * 243 + "@example.com"
       expect(@user).to be_valid
+    end
+
+    it 'passwordが空文字の時無効である' do
+      @user.password = @user.password_confirmation = "　" * 6
+      expect(@user).to_not be_valid
+    end
+
+    it 'passwordが6文字以上の時有効である' do
+      @user.password = @user.password_confirmation = "a" * 6
+      expect(@user).to be_valid
+    end
+
+    it 'passwordが5文字以下の時無効である' do
+      @user.password = @user.password_confirmation = "a" * 5
+      expect(@user).to_not be_valid
     end
 
     it '重複したメールアドレスは無効である' do
